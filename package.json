@@ -16,15 +16,18 @@
   "author": "matt-clarson",
   "license": "ISC",
   "devDependencies": {
+    "@testing-library/react-hooks": "^3.2.1",
     "@types/jest": "^25.1.4",
     "@types/node": "^13.9.8",
     "@types/prop-types": "^15.7.3",
     "@types/react": "^16.9.31",
     "@types/react-dom": "^16.9.6",
+    "@types/testing-library__react-hooks": "^3.2.0",
     "ink-testing-library": "^1.0.3",
     "jest": "^25.2.4",
     "parcel-bundler": "^1.12.4",
     "prettier": "^2.0.2",
+    "react-test-renderer": "^16.13.1",
     "ts-jest": "^25.3.0",
     "typescript": "^3.8.3"
   },

@@ -1,15 +1,12 @@
-import React, { ReactElement } from "react";
-import PageContext, { Page as _Page } from "../context";
+import React from "react";
+import PageContext, { TPageContext } from "../context";
 import { Box } from "ink";
-import { render, Helpers } from "ink-testing-library";
+import { render } from "ink-testing-library";
 
 import Page from "../Page";
 
-const pageContextValue = (page: _Page) => ({
-  page,
-  pageState: {},
-  setPage: (_: _Page) => {},
-  setPageState: (_ = {}) => {},
+const pageContextValue = (page: string): TPageContext => ({
+  page
 });
 
 describe("<Page />", () => {

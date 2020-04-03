@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes, { InferProps } from "prop-types";
-import PageContext from "./context";
+import PageContext, { PageState } from "./context";
 
 const PagesProps = {
   children: PropTypes.node
@@ -8,7 +8,7 @@ const PagesProps = {
 
 const Pages = ({ children }: InferProps<typeof PagesProps>) => {
   const [page, setPage] = useState("");
-  const [pageState, setPageState] = useState();
+  const [pageState, setPageState] = useState<PageState | undefined>();
   return (
     <PageContext.Provider value={{ page, setPage, pageState, setPageState }}>
       {children}

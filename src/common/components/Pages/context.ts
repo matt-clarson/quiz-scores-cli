@@ -1,17 +1,12 @@
 import { createContext } from "react";
 
-export type Page = string;
-const page: Page = "";
 export type PageState = { [key: string]: any };
-const pageState: PageState = {};
-export type SetPage = (page: string) => void;
-const setPage: SetPage = (_: string) => {};
-export type SetPageState = (pageState?: PageState) => void;
-const setPageState = (_?: PageState) => {};
 
-export default createContext({
-  page,
-  pageState,
-  setPage,
-  setPageState
-});
+export type TPageContext = {
+  page: string;
+  pageState?: PageState;
+  setPage?: (page: string) => void;
+  setPageState?: (pageState?: PageState) => void;
+};
+
+export default createContext<TPageContext>({ page: "" });
