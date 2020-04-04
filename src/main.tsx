@@ -1,6 +1,7 @@
 import React from "react";
 import { render } from "ink";
 import { Pages, Page } from "./common/components/Pages";
+import { Quiz } from "./Quiz";
 import Startup from "./Startup";
 import PeoplePicker from "./PeoplePicker";
 
@@ -10,15 +11,17 @@ type AppProps = {
 
 const App: React.FC<AppProps> = ({ people }) => {
   return (
-    <Pages>
-      <Page page="">
-        <Startup />
-      </Page>
+    <Quiz>
+      <Pages>
+        <Page page="">
+          <Startup />
+        </Page>
 
-      <Page page="people-picker">
-        <PeoplePicker people={people} />
-      </Page>
-    </Pages>
+        <Page page="people-picker">
+          <PeoplePicker people={people} />
+        </Page>
+      </Pages>
+    </Quiz>
   );
 };
 
