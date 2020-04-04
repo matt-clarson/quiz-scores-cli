@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Box, useInput } from "ink";
+import { useActive } from "../../hooks";
 import Checkbox from "./Checkbox";
 
 type SelectProps = {
@@ -10,12 +11,10 @@ type SelectProps = {
 
 const Select: React.FC<SelectProps> = ({ label, data, onSelect }) => {
   const [selected, setSelected] = useState(0);
-  const [active, setActive] = useState(0);
+  const active = useActive(data);
 
   useInput((input, key) => {
-    if (key.downArrow) setActive(Math.min(active + 1, data.length - 1));
-    else if (key.upArrow) setActive(Math.max(0, active - 1));
-    else if (input === " ") setSelected(selected ^ (2 ** active));
+    if (input === " ") setSelected(selected ^ (2 ** active));
     else if (key.return) onSelect(data.filter((_, i) => selected & (2 ** i)));
   });
 
