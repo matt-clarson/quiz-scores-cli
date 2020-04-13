@@ -21,6 +21,19 @@ npm run compile               // creates ./build/quiz-scores.js
 node ./build/quiz-scores.js   // run the CLI
 ```
 
+You will need to provide your own list of quizzers. You can do this with environment variables.  
+The easiest way is by making a `.env` file in the root of the directory, adding a variable `PEOPLE`, a comma separated list of people:
+
+```
+// .env
+
+PEOPLE=John,Kate,Ellie,Zack
+```
+
+**Note** that the `PEOPLE` variable needs to be present _at compile time_ not at runtime.
+
+---
+
 ## Development
 
 The following commands will be useful for development:
