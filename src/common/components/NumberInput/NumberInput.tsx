@@ -11,6 +11,13 @@ type NumberInputProps = {
 
 const DIGIT = /^\d$/;
 const isBackspace = (character: string) => character.charCodeAt(0) === 127;
+const deleteFromNumber = (n?: number): number => {
+  if (n === undefined || n < 10) return 0;
+  else {
+    const stringN = n.toString();
+    return parseInt(stringN.slice(0, stringN.length - 1));
+  }
+};
 
 const NumberInput: React.FC<NumberInputProps> = ({
   label,
@@ -23,11 +30,8 @@ const NumberInput: React.FC<NumberInputProps> = ({
 
     if (input.match(DIGIT)) {
       onChange(label, parseInt(`${value ?? ""}${input}`));
-    } else if (isBackspace(input) && value === undefined) {
-      onChange(label, value);
-    } else if (isBackspace(input) && value !== undefined) {
-      const vString = value.toString();
-      onChange(label, parseInt(vString.slice(0, vString.length - 1)));
+    } else if (isBackspace(input)) {
+      onChange(label, deleteFromNumber(value));
     }
   });
   return <Focusable focus={focus}>{`${label}: ${value ?? ""}`}</Focusable>;

@@ -61,5 +61,15 @@ describe("<NumberInput />", () => {
       testCli.stdin.write(BACKSPACE);
       expect(onChange).toHaveBeenCalledWith("Test Input", 10);
     });
+
+    it("should handle completely removing value with backspaces", () => {
+      const _localTree = (
+        <NumberInput label="Test Input" value={1} onChange={onChange} focus />
+      );
+      const testCli = render(_localTree);
+      testCli.rerender(_localTree);
+      testCli.stdin.write(BACKSPACE);
+      expect(onChange).toHaveBeenCalledWith("Test Input", 0);
+    });
   });
 });
