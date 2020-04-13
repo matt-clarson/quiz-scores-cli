@@ -10,7 +10,11 @@
     "test:watch": "jest --watch",
     "test:coverage": "USE_COVERAGE=true jest"
   },
-  "keywords": ["react", "ink", "cli"],
+  "keywords": [
+    "react",
+    "ink",
+    "cli"
+  ],
   "author": "matt-clarson",
   "license": "ISC",
   "devDependencies": {
@@ -33,6 +37,7 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "ink": "^2.7.1",
+    "moment": "^2.24.0",
     "react": "^16.13.1",
     "yoga-layout-prebuilt": "^1.9.5"
   }

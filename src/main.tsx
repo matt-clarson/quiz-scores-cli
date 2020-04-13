@@ -7,12 +7,14 @@ import { Confirmation } from "./common/components/Confirmation";
 import PeoplePicker from "./PeoplePicker";
 import Scores from "./Scores";
 import Results from "./Results";
+import { CsvWriter, FileWriter } from "./common/file-writer";
 
 type AppProps = {
   people: string[];
+  fileWriter: FileWriter;
 };
 
-const App: React.FC<AppProps> = ({ people }) => {
+const App: React.FC<AppProps> = ({ people, fileWriter }) => {
   return (
     <Quiz>
       <Pages>
@@ -33,7 +35,7 @@ const App: React.FC<AppProps> = ({ people }) => {
         </Page>
 
         <Page page="results">
-          <Results />
+          <Results fileWriter={fileWriter} />
         </Page>
       </Pages>
     </Quiz>
@@ -42,5 +44,6 @@ const App: React.FC<AppProps> = ({ people }) => {
 
 export default function main() {
   const people: string[] = (process.env.PEOPLE ?? "").split(/[,;]/);
-  render(<App people={people} />);
+  const csvWriter = new CsvWriter();
+  render(<App people={people} fileWriter={csvWriter} />);
 }

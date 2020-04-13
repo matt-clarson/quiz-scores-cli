@@ -1,6 +1,14 @@
 import { QuizMember } from "../Quiz";
 
-const calculateScore = (member: QuizMember, members: QuizMember[]): number => {
+export type CalculateScoreResult = {
+  avgRoundScore: number;
+  finalScore: number;
+};
+
+const calculateScore = (
+  member: QuizMember,
+  members: QuizMember[]
+): CalculateScoreResult => {
   if (member.scores === undefined)
     throw new Error(`${member.name} has no scores`);
   let baseScore = 0;
@@ -18,7 +26,8 @@ const calculateScore = (member: QuizMember, members: QuizMember[]): number => {
       throw new Error(`${otherMember.name} has no score for ${member.name}`);
     return acc + otherMember.scores[member.name]!;
   }, 0);
-  return Math.ceil(rawRoundScore / (members.length - 1)) + baseScore;
+  const avgRoundScore = Math.ceil(rawRoundScore / (members.length - 1));
+  return { avgRoundScore, finalScore: avgRoundScore + baseScore };
 };
 
 export default calculateScore;
