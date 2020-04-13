@@ -40,5 +40,16 @@ describe("Quiz/hooks", () => {
         { name: "b" }
       ]);
     });
+
+    it("should allow member scores to be set", () => {
+      const { result } = renderHook(() => hooks.useQuiz(), { wrapper });
+      act(() => result.current.setMembers(["John", "Kate", "Ellie"]));
+      act(() => result.current.setMemberScores("John", { Kate: 7, Ellie: 8 }));
+      expect(result.current.members).toStrictEqual([
+        { name: "John", scores: { Kate: 7, Ellie: 8 } },
+        { name: "Kate" },
+        { name: "Ellie" }
+      ]);
+    });
   });
 });
