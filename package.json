@@ -5,14 +5,11 @@
   "main": "index.js",
   "scripts": {
     "compile": "parcel build ./src/index.ts --out-dir build --out-file quiz-scores.js --target node --bundle-node-modules --no-source-maps",
+    "start": "npm run compile && node ./build/quiz-scores.js",
     "test": "jest",
     "test:watch": "jest --watch"
   },
-  "keywords": [
-    "react",
-    "ink",
-    "cli"
-  ],
+  "keywords": ["react", "ink", "cli"],
   "author": "matt-clarson",
   "license": "ISC",
   "devDependencies": {
