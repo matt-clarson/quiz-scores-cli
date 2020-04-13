@@ -1,6 +1,7 @@
 node_modules/
 bin/
 build/
+coverage/
 .cache/
 .vscode/
 .env
