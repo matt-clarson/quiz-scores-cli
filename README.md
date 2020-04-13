@@ -30,7 +30,7 @@ The easiest way is by making a `.env` file in the root of the directory, adding 
 PEOPLE=John,Kate,Ellie,Zack
 ```
 
-**Note** that the `PEOPLE` variable needs to be present _at compile time_ not at runtime.
+**Note** that the `PEOPLE` variable needs to be present _at runtime_ not at compilation.
 
 ---
 
