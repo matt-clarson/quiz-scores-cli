@@ -3,8 +3,6 @@ import { render } from "ink-testing-library";
 
 import ScoreRecorder from "../ScoreRecorder";
 
-const BACKSPACE = String.fromCharCode(127);
-const UP_ARROW = "\u001B[A";
 const DOWN_ARROW = "\u001B[B";
 const RETURN_KEY = "\r";
 

@@ -6,13 +6,21 @@ type QuizProps = {
 };
 
 const reducer = (
-  _members: QuizMember[],
+  members: QuizMember[],
   action: DispatchAction
 ): QuizMember[] => {
-  if (action.type === "SET_MEMBERS") {
-    return action.members?.map((name: string) => ({ name })) ?? [];
+  switch (action.type) {
+    case "SET_MEMBER_SCORES":
+      return members.map(member =>
+        action.member === member.name
+          ? { ...member, scores: action.scores }
+          : member
+      );
+    case "SET_MEMBERS":
+      return action.members?.map((name: string) => ({ name })) ?? [];
+    default:
+      return [];
   }
-  return [];
 };
 
 const Quiz: React.FC<QuizProps> = ({ children }) => {

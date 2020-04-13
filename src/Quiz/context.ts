@@ -14,7 +14,13 @@ type SetMembersAction = {
   members: string[];
 };
 
-export type DispatchAction = SetMembersAction;
+type SetMemberScores = {
+  type: "SET_MEMBER_SCORES";
+  member: string;
+  scores: Scores;
+};
+
+export type DispatchAction = SetMembersAction | SetMemberScores;
 
 export type QuizDispatcher = (action: DispatchAction) => void;
 

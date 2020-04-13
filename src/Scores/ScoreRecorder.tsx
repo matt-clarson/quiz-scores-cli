@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Box, useInput } from "ink";
 import { useActive } from "../common/hooks";
 import { NumberInput } from "../common/components/NumberInput";
@@ -10,14 +10,24 @@ type ScoreRecorderProps = {
   onSubmit: (scores: Scores) => void;
 };
 
+const buildInitialState = (person: string, people: QuizMember[]): Scores =>
+  people.reduce(
+    (acc, { name }) => (name === person ? acc : { ...acc, [name]: undefined }),
+    {}
+  );
+
 const ScoreRecorder: React.FC<ScoreRecorderProps> = ({
   person,
   people,
   onSubmit
 }) => {
   const [scores, setScores] = useState<Scores>(
-    people.reduce((acc, { name }) => ({ ...acc, [name]: undefined }), {})
+    buildInitialState(person, people)
   );
+  useEffect(() => setScores(buildInitialState(person, people)), [
+    person,
+    people
+  ]);
   const rounds = useMemo(() => people.filter(({ name }) => name !== person), [
     person,
     people

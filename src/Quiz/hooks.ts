@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import QuizContext, { QuizMember } from "./context";
+import QuizContext, { QuizMember, Scores } from "./context";
 
 type UseQuizResult = {
   members: QuizMember[];
   setMembers: (members: string[]) => void;
+  setMemberScores: (member: string, scores: Scores) => void;
 };
 
 export const useQuiz = (): UseQuizResult => {
@@ -12,5 +13,7 @@ export const useQuiz = (): UseQuizResult => {
     if (members.length > 0) return;
     dispatch?.({ type: "SET_MEMBERS", members: newMembers });
   };
-  return { members, setMembers };
+  const setMemberScores = (member: string, scores: Scores) =>
+    dispatch?.({ type: "SET_MEMBER_SCORES", member, scores });
+  return { members, setMembers, setMemberScores };
 };
