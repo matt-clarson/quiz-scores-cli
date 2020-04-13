@@ -9,12 +9,17 @@
     "test": "jest",
     "test:watch": "jest --watch"
   },
-  "keywords": ["react", "ink", "cli"],
+  "keywords": [
+    "react",
+    "ink",
+    "cli"
+  ],
   "author": "matt-clarson",
   "license": "ISC",
   "devDependencies": {
     "@testing-library/react-hooks": "^3.2.1",
     "@types/jest": "^25.1.4",
+    "@types/lodash": "^4.14.149",
     "@types/node": "^13.9.8",
     "@types/prop-types": "^15.7.3",
     "@types/react": "^16.9.31",

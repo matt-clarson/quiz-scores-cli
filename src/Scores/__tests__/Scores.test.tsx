@@ -96,6 +96,25 @@ describe("<Scores />", () => {
     expect(pageContext.setPageState).toHaveBeenCalledWith({ person: "John" });
   });
 
+  it("should provide an accept function that saves latest scores", () => {
+    const testCli = render(tree);
+    testCli.rerender(tree);
+    testCli.stdin.write("6");
+    testCli.rerender(tree);
+    testCli.stdin.write(DOWN_ARROW);
+    testCli.rerender(tree);
+    testCli.stdin.write("5");
+    testCli.rerender(tree);
+    testCli.stdin.write(RETURN_KEY);
+    const { acceptFn } = pageContext.setPageState.mock.calls[0][0];
+    acceptFn();
+    expect(quizContext.dispatch).toHaveBeenCalledWith({
+      type: "SET_MEMBER_SCORES",
+      member: "John",
+      scores: { Kate: 6, Ellie: 5 }
+    });
+  });
+
   it("should provide an accept function that returns to scores page for next person", () => {
     const testCli = render(tree);
     testCli.rerender(tree);

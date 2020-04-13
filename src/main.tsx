@@ -6,6 +6,7 @@ import Startup from "./Startup";
 import { Confirmation } from "./common/components/Confirmation";
 import PeoplePicker from "./PeoplePicker";
 import Scores from "./Scores";
+import Results from "./Results";
 
 type AppProps = {
   people: string[];
@@ -29,6 +30,10 @@ const App: React.FC<AppProps> = ({ people }) => {
 
         <Page page="scores">
           <Scores />
+        </Page>
+
+        <Page page="results">
+          <Results />
         </Page>
       </Pages>
     </Quiz>

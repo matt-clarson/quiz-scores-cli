@@ -22,7 +22,7 @@ const Scores: React.FC = () => {
   const submitScores = (scores: Scores) => {
     setPage("confirmation", {
       acceptFn: () => {
-        setMemberScores(pageState?.person, scores);
+        setMemberScores(person, scores);
         if (finalScoresSubmitted(members)) {
           setPage("results");
         } else {
