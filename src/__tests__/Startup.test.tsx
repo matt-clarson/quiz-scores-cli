@@ -9,8 +9,7 @@ describe("<Startup />", () => {
     const testCli = render(<Startup />);
 
     expect(testCli.lastFrame()).toMatchInlineSnapshot(`
-      "PUB QUIZ ON TOUR
-      Welcome! Press Enter to start.
+      "Welcome! Press Enter to start.
       (You can exit at any time by pressing CTRL-C)"
     `);
   });

@@ -1,5 +1,5 @@
 import React from "react";
-import { render, useApp } from "ink";
+import { Box, render, useApp } from "ink";
 import { Pages, Page } from "./common/components/Pages";
 import { Quiz } from "./Quiz";
 import Startup from "./Startup";
@@ -19,31 +19,35 @@ const App: React.FC<AppProps> = ({ people, fileWriter }) => {
   const { exit } = useApp();
   return (
     <Quiz>
-      <Pages>
-        <Page page="">
-          <Startup />
-        </Page>
+      <Box flexDirection="column">
+        <Box>{"PUB QUIZ ON TOUR"}</Box>
+        <Box>{Array(60).fill("=").join("")}</Box>
+        <Pages>
+          <Page page="">
+            <Startup />
+          </Page>
 
-        <Page page="confirmation">
-          <Confirmation />
-        </Page>
+          <Page page="confirmation">
+            <Confirmation />
+          </Page>
 
-        <Page page="people-picker">
-          <PeoplePicker people={people} />
-        </Page>
+          <Page page="people-picker">
+            <PeoplePicker people={people} />
+          </Page>
 
-        <Page page="scores">
-          <Scores />
-        </Page>
+          <Page page="scores">
+            <Scores />
+          </Page>
 
-        <Page page="results">
-          <Results fileWriter={fileWriter} />
-        </Page>
+          <Page page="results">
+            <Results fileWriter={fileWriter} />
+          </Page>
 
-        <Page page="final">
-          <Final exit={exit} />
-        </Page>
-      </Pages>
+          <Page page="final">
+            <Final exit={exit} />
+          </Page>
+        </Pages>
+      </Box>
     </Quiz>
   );
 };

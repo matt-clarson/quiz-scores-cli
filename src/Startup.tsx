@@ -10,7 +10,6 @@ const Startup = () => {
 
   return (
     <Box flexDirection="column">
-      <Box>{"PUB QUIZ ON TOUR"}</Box>
       <Box>{"Welcome! Press Enter to start."}</Box>
       <Box>{"(You can exit at any time by pressing CTRL-C)"}</Box>
     </Box>
