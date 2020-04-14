@@ -1,6 +1,6 @@
 {
   "name": "quiz-scores",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "description": "generate quiz scores for given users",
   "main": "index.js",
   "scripts": {
@@ -8,13 +8,14 @@
     "start": "npm run compile && node ./build/quiz-scores.js",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "USE_COVERAGE=true jest"
+    "test:coverage": "USE_COVERAGE=true jest",
+    "build:target": "nexe --target $NEXE_TARGET-12.15.0 --input build/quiz-scores.js --output bin/quiz-scores-${npm_package_version}_${NEXE_TARGET}-12.15.0${NEXE_SUFFIX}",
+    "build:macos": "NEXE_TARGET=darwin-x64 npm run build:target",
+    "build:linux": "NEXE_TARGET=linux-x64 npm run build:target",
+    "build:windows": "NEXE_TARGET=windows-x64 NEXE_SUFFIX=.exe npm run build:target",
+    "build": "npm run compile && npm run build:macos && npm run build:linux && npm run build:windows"
   },
-  "keywords": [
-    "react",
-    "ink",
-    "cli"
-  ],
+  "keywords": ["react", "ink", "cli"],
   "author": "matt-clarson",
   "license": "ISC",
   "devDependencies": {
@@ -28,6 +29,7 @@
     "@types/testing-library__react-hooks": "^3.2.0",
     "ink-testing-library": "^1.0.3",
     "jest": "^25.2.4",
+    "nexe": "^3.3.2",
     "parcel-bundler": "^1.12.4",
     "prettier": "^2.0.2",
     "react-test-renderer": "^16.13.1",

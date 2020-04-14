@@ -5,7 +5,7 @@ Written using [TypeScript](https://www.typescriptlang.org/), [Ink](https://githu
 
 ## Usage
 
-At the moment [NodeJS](https://nodejs.org/en/) is required to run this, so make sure that is installed, than clone this repo, install dependencies, build, and run:
+The quickest way to get started is to use the `start` script. This compiles and bundles the TypeScript into a single `.js` file.
 
 ```bash
 git clone https://github.com/matt-clarson/quiz-scores-cli.git
@@ -14,11 +14,15 @@ npm install
 npm start
 ```
 
-At the moment, compilation outputs to the `./build/` directory, so you can compile and then just run the outputed `.js` file:
+**Testing required**
+
+You can also build binaries taht have the Node runtime built-in, using [nexe](https://github.com/nexe/nexe).
 
 ```bash
-npm run compile               // creates ./build/quiz-scores.js
-node ./build/quiz-scores.js   // run the CLI
+npm run build:macos     // targets darwin-x64
+npm run build:linux     // targets linux-x64
+npm run build:windows   // targets windowx-x64
+npm run build           // builds a binary for each target
 ```
 
 ### Output
