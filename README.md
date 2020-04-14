@@ -21,6 +21,12 @@ npm run compile               // creates ./build/quiz-scores.js
 node ./build/quiz-scores.js   // run the CLI
 ```
 
+### Output
+
+The CLI outputs a `csv` file containing all of the recorded information.The file will be output to a file named `quiz-result_<DD-MM-YYYY>.csv` in the dirctory you called the CLI from.
+
+### Environment Variables
+
 You will need to provide your own list of quizzers. You can do this with environment variables.  
 The easiest way is by making a `.env` file in the root of the directory, adding a variable `PEOPLE`, a comma separated list of people:
 
