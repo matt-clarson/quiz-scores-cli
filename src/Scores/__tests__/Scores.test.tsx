@@ -127,7 +127,7 @@ describe("<Scores />", () => {
     expect(pageContext.setPageState).toHaveBeenCalledWith({ person: "Kate" });
   });
 
-  it("should provide an accept function that moves to `results` page if all scores are submitted", () => {
+  it("should provide an accept function that sets page state to done if all scores are submitted", () => {
     Object.assign(quizContext, {
       members: [
         { name: "John", scores: { Kate: 5, Ellie: 8 } },
@@ -148,6 +148,14 @@ describe("<Scores />", () => {
     testCli.stdin.write(RETURN_KEY);
     const { acceptFn } = pageContext.setPageState.mock.calls[0][0];
     acceptFn();
+    expect(pageContext.setPage).toHaveBeenCalledWith("scores");
+    expect(pageContext.setPageState).toHaveBeenCalledWith({ done: true });
+  });
+
+  it("should move to results page if page state is done", () => {
+    Object.assign(pageContext, { pageState: { done: true } });
+    const testCli = render(tree);
+    testCli.rerender(tree);
     expect(pageContext.setPage).toHaveBeenCalledWith("results");
   });
 });

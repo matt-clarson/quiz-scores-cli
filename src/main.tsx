@@ -8,6 +8,7 @@ import PeoplePicker from "./PeoplePicker";
 import Scores from "./Scores";
 import Results from "./Results";
 import Final from "./Final";
+import ErrorHandler from "./ErrorHandler";
 import { CsvWriter, FileWriter } from "./common/file-writer";
 
 type AppProps = {
@@ -22,6 +23,7 @@ const App: React.FC<AppProps> = ({ people, fileWriter }) => {
       <Box flexDirection="column">
         <Box>{"PUB QUIZ ON TOUR"}</Box>
         <Box>{Array(60).fill("=").join("")}</Box>
+        <Box>{process.env.NODE_ENV}</Box>
         <Pages>
           <Page page="">
             <Startup />
@@ -55,5 +57,9 @@ const App: React.FC<AppProps> = ({ people, fileWriter }) => {
 export default function main() {
   const people: string[] = (process.env.PEOPLE ?? "").split(/[,;]/);
   const csvWriter = new CsvWriter();
-  render(<App people={people} fileWriter={csvWriter} />);
+  render(
+    <ErrorHandler>
+      <App people={people} fileWriter={csvWriter} />
+    </ErrorHandler>
+  );
 }

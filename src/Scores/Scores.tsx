@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ScoreRecorder from "./ScoreRecorder";
 import { usePages } from "../common/components/Pages";
 import { QuizMember, Scores, useQuiz } from "../Quiz";
@@ -19,15 +19,20 @@ const Scores: React.FC = () => {
   const { members, setMemberScores } = useQuiz();
   const person = pageState?.person ?? members[0].name;
 
+  useEffect(() => {
+    if (pageState?.done) setPage("results");
+  }, [pageState]);
+
   const submitScores = (scores: Scores) => {
     setPage("confirmation", {
       acceptFn: () => {
         setMemberScores(person, scores);
-        if (finalScoresSubmitted(members)) {
-          setPage("results");
-        } else {
-          setPage("scores", { person: nextPerson(members, person) });
-        }
+        setPage(
+          "scores",
+          finalScoresSubmitted(members)
+            ? { done: true }
+            : { person: nextPerson(members, person) }
+        );
       },
       cancelFn: () => setPage("scores", { person: person }),
       message: `Scores entered: ${Object.entries(scores)

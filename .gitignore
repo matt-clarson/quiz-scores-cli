@@ -5,3 +5,4 @@ coverage/
 .cache/
 .vscode/
 .env
+*.d.ts

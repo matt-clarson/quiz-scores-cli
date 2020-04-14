@@ -11,3 +11,11 @@ export const wrapText = (text: string, width: number, padding = 1): string[] =>
         },
         [""]
       );
+
+export const suppressErrors = () => {
+  const consoleError = console.error;
+  global.console.error = () => {};
+  if (process.env.NODE_ENV === "development") {
+    global.console.error = consoleError;
+  }
+};
