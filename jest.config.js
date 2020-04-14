@@ -10,7 +10,7 @@ const config = {
 if (process.env.USE_COVERAGE) {
   Object.assign(config, {
     collectCoverage: true,
-    coveragePathIgnorePatterns: ['/node_modules/', 'index.ts']
+    coveragePathIgnorePatterns: ['/node_modules/', 'index.ts', 'test-utils.ts']
   });
 }
 
