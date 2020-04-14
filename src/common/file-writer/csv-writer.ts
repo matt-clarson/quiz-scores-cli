@@ -8,10 +8,11 @@ import FileWriter from "./file-writer";
 class CsvWriter implements FileWriter {
   private baseFilePath: string = path.join(process.cwd(), "quiz-result");
 
-  async write(data: string) {
+  async write(data: string): Promise<string> {
     const dateStamp = moment().format("DD-MM-YYYY");
     const filePath = `${this.baseFilePath}_${dateStamp}.csv`;
     await promisify(writeFile)(filePath, data);
+    return filePath;
   }
 }
 

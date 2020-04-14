@@ -10,16 +10,22 @@ describe("calculateScore()", () => {
   ];
 
   it.each`
-    member     | expected
-    ${"John"}  | ${24}
-    ${"Kate"}  | ${23}
-    ${"Ellie"} | ${22}
-    ${"Zack"}  | ${22}
-  `("should calculate correct scores", ({ member, expected }) => {
-    const quizMember = members.find(({ name }) => name === member)!;
-    const score = calculateScore(quizMember, members);
-    expect(score).toEqual(expected);
-  });
+    member     | expectedAvgScore | expectedFinalScore
+    ${"John"}  | ${5}             | ${24}
+    ${"Kate"}  | ${6}             | ${23}
+    ${"Ellie"} | ${9}             | ${22}
+    ${"Zack"}  | ${3}             | ${22}
+  `(
+    "should calculate correct scores",
+    ({ member, expectedAvgScore, expectedFinalScore }) => {
+      const quizMember = members.find(({ name }) => name === member)!;
+      const score = calculateScore(quizMember, members);
+      expect(score).toStrictEqual({
+        avgRoundScore: expectedAvgScore,
+        finalScore: expectedFinalScore
+      });
+    }
+  );
 
   describe("null checks", () => {
     it("should raise error if member scores not present", () => {

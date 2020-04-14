@@ -1,5 +1,5 @@
 interface FileWriter {
-  write: (data: string) => Promise<void>;
+  write: (data: string) => Promise<string>;
 }
 
 export default FileWriter;

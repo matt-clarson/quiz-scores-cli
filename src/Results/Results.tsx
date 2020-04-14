@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, useInput } from "ink";
 import { useQuiz } from "../Quiz";
+import { usePages } from "../common/components/Pages";
 import calculateScore, { CalculateScoreResult } from "./calculate-score";
 import formatResultsAsCsv from "./format-results-as-csv";
 import { FileWriter } from "../common/file-writer";
@@ -11,6 +12,7 @@ type ResultsProps = {
 
 const Results: React.FC<ResultsProps> = ({ fileWriter }) => {
   const { members } = useQuiz();
+  const { setPage } = usePages();
 
   const scores = members
     .map<[string, CalculateScoreResult]>(member => [
@@ -21,7 +23,9 @@ const Results: React.FC<ResultsProps> = ({ fileWriter }) => {
 
   useInput((_, key) => {
     if (key.return) {
-      fileWriter.write(formatResultsAsCsv(members, scores));
+      fileWriter
+        .write(formatResultsAsCsv(members, scores))
+        .then(outputedFilePath => setPage("final", { outputedFilePath }));
     }
   });
 
