@@ -2,25 +2,10 @@ import React from "react";
 import { render } from "ink-testing-library";
 import { QuizContext } from "../../Quiz";
 import { PageContext } from "../../common/components/Pages";
+import { wait } from "../../common/test-utils";
 import Results from "../Results";
 
 const RETURN_KEY = "\r";
-
-const wait = (cb: () => void, timeout = 3000): Promise<void> =>
-  new Promise((resolve, reject) => {
-    let elapsed = 0;
-    const interval = 100;
-    let intervalId = setInterval(() => {
-      elapsed += interval;
-      try {
-        cb();
-        clearInterval(intervalId);
-        resolve();
-      } catch (error) {
-        if (elapsed >= timeout) reject(error);
-      }
-    }, interval);
-  });
 
 describe("<Results />", () => {
   const mockFileWriter = { write: jest.fn() };

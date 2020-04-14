@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "ink";
+import { render, useApp } from "ink";
 import { Pages, Page } from "./common/components/Pages";
 import { Quiz } from "./Quiz";
 import Startup from "./Startup";
@@ -7,6 +7,7 @@ import { Confirmation } from "./common/components/Confirmation";
 import PeoplePicker from "./PeoplePicker";
 import Scores from "./Scores";
 import Results from "./Results";
+import Final from "./Final";
 import { CsvWriter, FileWriter } from "./common/file-writer";
 
 type AppProps = {
@@ -15,6 +16,7 @@ type AppProps = {
 };
 
 const App: React.FC<AppProps> = ({ people, fileWriter }) => {
+  const { exit } = useApp();
   return (
     <Quiz>
       <Pages>
@@ -36,6 +38,10 @@ const App: React.FC<AppProps> = ({ people, fileWriter }) => {
 
         <Page page="results">
           <Results fileWriter={fileWriter} />
+        </Page>
+
+        <Page page="final">
+          <Final exit={exit} />
         </Page>
       </Pages>
     </Quiz>
