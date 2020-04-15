@@ -16,13 +16,13 @@ npm start
 
 **Testing required**
 
-You can also build binaries taht have the Node runtime built-in, using [nexe](https://github.com/nexe/nexe).
+You can also build binaries that have the Node runtime built-in, using [nexe](https://github.com/nexe/nexe).
 
 ```bash
-npm run build:macos     // targets darwin-x64
-npm run build:linux     // targets linux-x64
-npm run build:windows   // targets windowx-x64
-npm run build           // builds a binary for each target
+npm run build:macos     # targets darwin-x64
+npm run build:linux     # targets linux-x64
+npm run build:windows   # targets windowx-x64
+npm run build           # builds a binary for each target
 ```
 
 ### Output
@@ -35,7 +35,7 @@ You will need to provide your own list of quizzers. You can do this with environ
 The easiest way is by making a `.env` file in the root of the directory, adding a variable `PEOPLE`, a comma separated list of people:
 
 ```
-// .env
+# .env
 
 PEOPLE=John,Kate,Ellie,Zack
 ```
