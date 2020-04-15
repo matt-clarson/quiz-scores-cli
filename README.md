@@ -34,7 +34,7 @@ The CLI outputs a `csv` file containing all of the recorded information.The file
 You will need to provide your own list of quizzers. You can do this with environment variables.  
 The easiest way is by making a `.env` file in the root of the directory, adding a variable `PEOPLE`, a comma separated list of people:
 
-```
+```bash
 # .env
 
 PEOPLE=John,Kate,Ellie,Zack
